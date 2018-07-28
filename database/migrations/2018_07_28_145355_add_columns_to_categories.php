@@ -14,8 +14,8 @@ class AddColumnsToCategories extends Migration
     public function up()
     {
         Schema::table('categories', function (Blueprint $table) {
-            $table->integer('sort')->nullable();
-            $table->integer('depth')->nullable();
+            $table->integer('sort')->nullable()->after('parent_id');
+            $table->integer('depth')->nullable()->after('sort');
         });
     }
 
