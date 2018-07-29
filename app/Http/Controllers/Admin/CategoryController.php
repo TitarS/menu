@@ -29,6 +29,25 @@ class CategoryController extends Controller
         return redirect()->route('category.index');
     }
 
+    public function edit($id)
+    {
+        $category = Category::find($id);
+        $categories = Category::all();
+        $parents = $categories->pluck('title', 'id')->all();
+
+        return view('admin.categoriesUpdate', compact('category', 'parents'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $category = Category::find($id);
+        $category->title = $request->title;
+        $category->parent_id = $request->parent_id;
+        $category->save();
+
+        return redirect()->route('category.index');
+    }
+
     public function destroy(Category $category)
     {
         foreach ($category->children as $child) {

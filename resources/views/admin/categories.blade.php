@@ -44,7 +44,7 @@
                         <td>Нету</td>
                     @endif
                     <td>
-                        <a href="" class="btn btn-warning btn-sm">Изменить</a>
+                        <a href="{{ route('category.edit', $category->id) }}" class="btn btn-warning btn-sm">Изменить</a>
                         <form action="{{ route('category.destroy', $category->id) }}" method="post" style="display: inline">
                             {{ csrf_field() }}
                             <input type="hidden" name="_method" value="DELETE">

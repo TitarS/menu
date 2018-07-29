@@ -39,4 +39,9 @@ class Category extends Model
         }
     }
 
+    public function getParentId()
+    {
+        return $this->parent != null ? $this->parent->id : 'not';
+    }
+
 }
